@@ -68,8 +68,16 @@ function select(id: string) {
       <FormulaSelector :selected-id="selectedId" :query="query" @select="select" />
     </div>
 
-    <div class="border-t border-azul-borda/70 px-5 py-4 text-[11px] text-tinta-3">
-      © {{ new Date().getFullYear() }} Rodrigo Caon
+    <div class="border-t border-azul-borda/70 px-5 py-4 text-[11px] leading-relaxed text-tinta-3">
+      <div>© {{ new Date().getFullYear() }} <span class="font-medium text-tinta-2">Rodrigo Caon</span></div>
+      <a
+        href="https://rodrigocaon.com.br"
+        target="_blank"
+        rel="noopener"
+        class="font-medium text-azul hover:underline"
+      >
+        rodrigocaon.com.br ↗
+      </a>
     </div>
   </aside>
 </template>
