@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-tinta: #0b1033;
+  --color-tinta-2: #4a5078;
+  --color-tinta-3: #8a90b2;
+  --color-azul: #2b3bff;
+  --color-azul-escuro: #1a1fb8;
+  --color-azul-claro: #eef1ff;
+  --color-azul-borda: #d9defc;
+  --color-ciano: #19c3e6;
+  --color-erro: #e5384b;
+}
+
+:root {
+  --gradiente: linear-gradient(135deg, #3a1fff 0%, #2563eb 55%, #19c3e6 100%);
+  --sombra: 0 1px 2px rgba(11, 16, 51, 0.04), 0 12px 32px -12px rgba(43, 59, 255, 0.18);
+  --sombra-forte: 0 2px 4px rgba(11, 16, 51, 0.05), 0 24px 48px -16px rgba(43, 59, 255, 0.32);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  background: #fff;
+}
+
+body {
+  min-height: 100vh;
+  background: #fff;
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+
+/* ---------- Cenário: grade leve + arcos de linha (estilo Zend) ---------- */
+.cenario {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 100% 0%, rgba(25, 195, 230, 0.12), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 0%, rgba(58, 31, 255, 0.07), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 100% 100%, rgba(43, 59, 255, 0.07), transparent 70%),
+    linear-gradient(rgba(43, 59, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, rgba(43, 59, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px,
+    #fff;
+}
+.cenario::after {
+  content: "";
+  position: absolute;
+  top: -320px;
+  right: -320px;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 11px, rgba(25, 195, 230, 0.16) 11px 12px);
+  mask-image: radial-gradient(circle, #000 30%, transparent 70%);
+}
+
+/* ---------- Tipografia ---------- */
+.rotulo {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-tinta-3);
+}
+.rotulo-azul {
+  color: var(--color-azul);
+}
+.texto-gradiente {
+  background: var(--gradiente);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---------- Superfícies ---------- */
+.cartao {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-azul-borda);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- Botões ---------- */
+.pilula {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  border: 1px solid var(--color-azul-borda);
+  border-radius: 999px;
+  background: #fff;
+  padding: 0.55em 1.2em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tinta-2);
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.pilula:hover:not(:disabled) {
+  border-color: var(--color-azul);
+  color: var(--color-azul);
+}
+.pilula:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pilula-cheia {
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+  background: var(--gradiente);
+  box-shadow: 0 8px 22px -8px rgba(43, 59, 255, 0.6);
+}
+.pilula-cheia:hover:not(:disabled) {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -8px rgba(43, 59, 255, 0.7);
+}
+
+/* ---------- KaTeX ---------- */
+.katex {
+  font-size: 1.1em;
+}
+.formula-hero .katex {
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  color: var(--color-tinta);
+}
+.palco .katex-display > .katex {
+  font-size: clamp(1.2rem, 2.6vw, 2rem);
+}
+.katex-display {
+  margin: 0;
+}
+
+/* ---------- Barra de progresso ---------- */
+.trilha {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--gradiente) 0 / var(--p, 0%) 100% no-repeat, var(--color-azul-claro);
+  cursor: pointer;
+}
+.trilha::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-azul);
+  box-shadow: 0 2px 8px rgba(43, 59, 255, 0.4);
+}
+.trilha::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-azul);
+  box-shadow: 0 2px 8px rgba(43, 59, 255, 0.4);
+}
+
+/* ---------- Transições ---------- */
+.passo-enter-active,
+.passo-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+.passo-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(3px);
+}
+.passo-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+  filter: blur(3px);
+}
+.troca-enter-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.troca-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(43, 59, 255, 0.2) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

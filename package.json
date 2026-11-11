@@ -1,0 +1,26 @@
+{
+  "name": "financial-math-lab",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Rodrigo Caon",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "katex": "^0.16.47",
+    "vue": "^3.5.45"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.6",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "tailwindcss": "^4.3.5",
+    "typescript": "5.6",
+    "vite": "^6.4.6",
+    "vue-tsc": "^2.2.12"
+  }
+}
